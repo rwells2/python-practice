@@ -59,6 +59,12 @@ class Book:
      
     def get_title(self):
         return self.book.get("title")
+    
+    def __lt__(self, other):
+        return self.book.get("title") < other.book.get("title")
+
+    def __eq__(self, other):
+        return self.book.get("title") == other.book.get("title")
 
 # ============================================================
 def add_book(book_list, book):
@@ -76,6 +82,7 @@ def search_book(book_list, title):
     return ""
 
 def list_books(book_list):
+    book_list.sort()
     for this_book in book_list:
         print(this_book, '\n')
 
